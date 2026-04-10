@@ -10,18 +10,18 @@ This document tracks the implementation status of all **RV32I base integer instr
 ---
 
 ## 📦 Load Instructions
-- [ ] `LB`  — Load Byte  
-- [ ] `LH`  — Load Halfword  
-- [ ] `LW`  — Load Word  
-- [ ] `LBU` — Load Byte Unsigned  
-- [ ] `LHU` — Load Halfword Unsigned  
+- [x] `LB`  — Load Byte  
+- [x] `LH`  — Load Halfword  
+- [x] `LW`  — Load Word  
+- [x] `LBU` — Load Byte Unsigned  
+- [x] `LHU` — Load Halfword Unsigned  
 
 ---
 
 ## 📦 Store Instructions
-- [ ] `SB` — Store Byte  
-- [ ] `SH` — Store Halfword  
-- [ ] `SW` — Store Word  
+- [x] `SB` — Store Byte  
+- [x] `SH` — Store Halfword  
+- [x] `SW` — Store Word  
 
 ---
 
@@ -39,21 +39,21 @@ This document tracks the implementation status of all **RV32I base integer instr
 ---
 
 ## ➕ Register Arithmetic Instructions
-- [ ] `ADD`  — Add  
-- [ ] `SUB`  — Subtract  
+- [x] `ADD`  — Add  
+- [x] `SUB`  — Subtract  
 - [ ] `SLL`  — Shift Left Logical  
 - [ ] `SLT`  — Set Less Than  
 - [ ] `SLTU` — Set Less Than Unsigned  
 - [ ] `XOR`  — XOR  
 - [ ] `SRL`  — Shift Right Logical  
 - [ ] `SRA`  — Shift Right Arithmetic  
-- [ ] `OR`   — OR  
-- [ ] `AND`  — AND  
+- [x] `OR`   — OR  
+- [x] `AND`  — AND  
 
 ---
 
 ## 🔀 Branch Instructions
-- [ ] `BEQ`  — Branch if Equal  
+- [x] `BEQ`  — Branch if Equal  
 - [ ] `BNE`  — Branch if Not Equal  
 - [ ] `BLT`  — Branch if Less Than  
 - [ ] `BGE`  — Branch if Greater or Equal  
@@ -99,7 +99,7 @@ This document tracks the implementation status of all **RV32I base integer instr
 
 ## 📊 Progress Summary
 Total Instructions: 47  
-Completed: 0  
+Completed: 13  
 In Progress: 0  
 Remaining: 47  
 
