@@ -1,0 +1,20 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../arch_project1.srcs/sources_1/new/ALU_control_unit.v" \
+"../../../../arch_project1.srcs/sources_1/new/DataMem.v" \
+"../../../../arch_project1.srcs/sources_1/new/ImmGen.v" \
+"../../../../arch_project1.srcs/sources_1/new/alu.v" \
+"../../../../arch_project1.srcs/sources_1/new/control_unit.v" \
+"../../../../arch_project1.srcs/sources_1/new/cpu.v" \
+"../../../../arch_project1.srcs/sources_1/new/instruction_memory.v" \
+"../../../../arch_project1.srcs/sources_1/new/nbitshiftleft1.v" \
+"../../../../arch_project1.srcs/sources_1/new/rca.v" \
+"../../../../arch_project1.srcs/sources_1/new/register.v" \
+"../../../../arch_project1.srcs/sources_1/new/register_file.v" \
+"../../../../arch_project1.srcs/sim_1/new/cpu_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
