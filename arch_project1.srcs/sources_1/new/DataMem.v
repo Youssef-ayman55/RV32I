@@ -25,14 +25,14 @@ input [7:0] addr, input [31:0] data_in, input[2:0] func3, output reg [31:0] data
 reg [7:0] mem [0:255];
     initial begin
         mem[0]=8'd255;
-        mem[1]=8'd0;
-        mem[2]=8'd203;
-        mem[3]=8'd21;
-        mem[4]=8'd9;
+        mem[1]=8'd255;
+        mem[2]=8'd255;
+        mem[3]=8'd255;
+        mem[4]=8'd3;
         mem[5]=8'd0;
         mem[6]=8'd0;
         mem[7]=8'd0;
-        mem[8]=8'd25;
+        mem[8]=8'd10;
         mem[9]=8'd0;
         mem[10]=8'd0;
         mem[11]=8'd0;

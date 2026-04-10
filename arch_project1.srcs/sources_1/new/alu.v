@@ -123,13 +123,13 @@ module ALU #(parameter N = 32)(
         .x0(a & b), // AND
         .x1(a | b), // OR
         .x2(rca_out), // ADD
-        .x3(0), // empty for now 
-        .x4(0), // empty for now 
-        .x5(0), // empty for now 
+        .x3(a ^ b), // XOR
+        .x4(a << b[4:0]), // SLL
+        .x5($unsigned(a) >> b[4:0]), // SRL
         .x6(rca_out), // SUB
-        .x7(0), // empty for now 
-        .x8(0), // empty for now 
-        .x9(0), // empty for now 
+        .x7($signed(a) < $signed(b) ? 32'd1 : 32'd0), // SLT 
+        .x8(a < b ? 32'd1 : 32'd0), // SLTU
+        .x9($signed(a) >>> b[4:0]), // SRA
         .x10(0), // empty for now 
         .x11(0), // empty for now 
         .x12(0), // empty for now 

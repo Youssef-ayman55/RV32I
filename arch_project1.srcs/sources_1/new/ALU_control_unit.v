@@ -34,13 +34,22 @@ module ALU_control_unit(
             case(instruction[14:12])
                 3'b000: begin
                     if (instruction[30])
-                        ALU_select = 4'b0110;
+                        ALU_select = 4'b0110; // SUB
                     else
-                        ALU_select = 4'b0010;
+                        ALU_select = 4'b0010; // ADD
                 end
-                3'b111: ALU_select = 4'b0000;
-                3'b110: ALU_select = 4'b0001;
-                default: ALU_select = 4'b0000;
+                3'b001: ALU_select = 4'b0100; // SLL
+                3'b010: ALU_select = 4'b0111; // SLT
+                3'b011: ALU_select = 4'b1000; // SLTU
+                3'b100: ALU_select = 4'b0011; // XOR 
+                3'b101: begin
+                    if (instruction[30])
+                        ALU_select = 4'b1001; // SRA
+                    else
+                        ALU_select = 4'b0101; // SRL
+                end
+                3'b110: ALU_select = 4'b0001; // OR
+                3'b111: ALU_select = 4'b0000; // AND
             endcase
         end
     end
