@@ -22,15 +22,15 @@ This document tracks the implementation status of all **RV32I base integer instr
 ---
 
 ## ➕ Immediate Arithmetic Instructions
-- [ ] `ADDI`  — Add Immediate  
-- [ ] `SLTI`  — Set Less Than Immediate  
-- [ ] `SLTIU` — Set Less Than Immediate Unsigned  
-- [ ] `XORI`  — XOR Immediate  
-- [ ] `ORI`   — OR Immediate  
-- [ ] `ANDI`  — AND Immediate  
-- [ ] `SLLI`  — Shift Left Logical Immediate  
-- [ ] `SRLI`  — Shift Right Logical Immediate  
-- [ ] `SRAI`  — Shift Right Arithmetic Immediate  
+- [x] `ADDI`  — Add Immediate  
+- [x] `SLTI`  — Set Less Than Immediate  
+- [x] `SLTIU` — Set Less Than Immediate Unsigned  
+- [x] `XORI`  — XOR Immediate  
+- [x] `ORI`   — OR Immediate  
+- [x] `ANDI`  — AND Immediate  
+- [x] `SLLI`  — Shift Left Logical Immediate  
+- [x] `SRLI`  — Shift Right Logical Immediate  
+- [x] `SRAI`  — Shift Right Arithmetic Immediate  
 
 ---
 
@@ -95,9 +95,9 @@ This document tracks the implementation status of all **RV32I base integer instr
 
 ## 📊 Progress Summary
 Total Instructions: 47  
-Completed: 19  
+Completed: 28  
 In Progress: 0  
-Remaining: 28  
+Remaining: 19  
 
 ---
 
