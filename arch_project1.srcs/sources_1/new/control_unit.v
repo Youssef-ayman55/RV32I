@@ -63,6 +63,15 @@ always @ * begin
             ALUSrc = 1'b0;
             RegWrite = 1'b1;
         end
+        5'b00100: begin // I-type ALU instructions
+            Branch = 1'b0;
+            MemRead = 1'b0;
+            MemtoReg = 1'b0;
+            ALUOp = 2'b10;
+            MemWrite = 1'b0;
+            ALUSrc = 1'b1;
+            RegWrite = 1'b1;
+        end
         5'b11000: begin
             Branch = 1'b1;
             MemRead = 1'b0;

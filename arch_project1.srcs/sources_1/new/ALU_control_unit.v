@@ -33,7 +33,7 @@ module ALU_control_unit(
         else begin
             case(instruction[14:12])
                 3'b000: begin
-                    if (instruction[30])
+                    if (instruction[30] & instruction[5]) // SUB is only used when it is R-type and bit 31 is 1
                         ALU_select = 4'b0110; // SUB
                     else
                         ALU_select = 4'b0010; // ADD
@@ -43,7 +43,7 @@ module ALU_control_unit(
                 3'b011: ALU_select = 4'b1000; // SLTU
                 3'b100: ALU_select = 4'b0011; // XOR 
                 3'b101: begin
-                    if (instruction[30])
+                    if (instruction[30]) // This works well for both R-types and I-types
                         ALU_select = 4'b1001; // SRA
                     else
                         ALU_select = 4'b0101; // SRL
