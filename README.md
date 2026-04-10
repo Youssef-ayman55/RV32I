@@ -2,10 +2,6 @@
 
 This document tracks the implementation status of all **RV32I base integer instruction set (unprivileged)** instructions in this CPU.
 
-## Legend
-- [ ] Not implemented  
-- [~] In progress  
-- [x] Completed  
 
 ---
 
@@ -101,7 +97,7 @@ This document tracks the implementation status of all **RV32I base integer instr
 Total Instructions: 47  
 Completed: 13  
 In Progress: 0  
-Remaining: 47  
+Remaining: 34  
 
 ---
 
