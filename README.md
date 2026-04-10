@@ -37,12 +37,12 @@ This document tracks the implementation status of all **RV32I base integer instr
 ## ➕ Register Arithmetic Instructions
 - [x] `ADD`  — Add  
 - [x] `SUB`  — Subtract  
-- [ ] `SLL`  — Shift Left Logical  
-- [ ] `SLT`  — Set Less Than  
-- [ ] `SLTU` — Set Less Than Unsigned  
-- [ ] `XOR`  — XOR  
-- [ ] `SRL`  — Shift Right Logical  
-- [ ] `SRA`  — Shift Right Arithmetic  
+- [x] `SLL`  — Shift Left Logical  
+- [x] `SLT`  — Set Less Than  
+- [x] `SLTU` — Set Less Than Unsigned  
+- [x] `XOR`  — XOR  
+- [x] `SRL`  — Shift Right Logical  
+- [x] `SRA`  — Shift Right Arithmetic  
 - [x] `OR`   — OR  
 - [x] `AND`  — AND  
 
@@ -95,9 +95,9 @@ This document tracks the implementation status of all **RV32I base integer instr
 
 ## 📊 Progress Summary
 Total Instructions: 47  
-Completed: 13  
+Completed: 19  
 In Progress: 0  
-Remaining: 34  
+Remaining: 28  
 
 ---
 
