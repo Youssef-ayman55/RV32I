@@ -50,11 +50,11 @@ This document tracks the implementation status of all **RV32I base integer instr
 
 ## 🔀 Branch Instructions
 - [x] `BEQ`  — Branch if Equal  
-- [ ] `BNE`  — Branch if Not Equal  
-- [ ] `BLT`  — Branch if Less Than  
-- [ ] `BGE`  — Branch if Greater or Equal  
-- [ ] `BLTU` — Branch if Less Than Unsigned  
-- [ ] `BGEU` — Branch if Greater or Equal Unsigned  
+- [x] `BNE`  — Branch if Not Equal  
+- [x] `BLT`  — Branch if Less Than  
+- [x] `BGE`  — Branch if Greater or Equal  
+- [x] `BLTU` — Branch if Less Than Unsigned  
+- [x] `BGEU` — Branch if Greater or Equal Unsigned  
 
 ---
 
