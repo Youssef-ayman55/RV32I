@@ -73,31 +73,16 @@ This document tracks the implementation status of all **RV32I base integer instr
 ## 🛑 System Instructions (Unprivileged Subset)
 - [ ] `ECALL`  — Environment Call  
 - [ ] `EBREAK` — Breakpoint  
-
----
-
-## 🧾 Optional Tracking (Nice-to-Have)
-
-### 🔍 Instruction Decode
-- [ ] Opcode decoding  
-- [ ] funct3 decoding  
-- [ ] funct7 decoding  
-
-### ⚙️ CPU Features
-- [ ] Register file  
-- [ ] ALU operations  
-- [ ] Immediate generator  
-- [ ] Branch comparator  
-- [ ] Memory interface  
-- [ ] Control unit / FSM or pipeline control  
+- [ ] `FENCE`
+- [ ] `FENCE.TSO`
 
 ---
 
 ## 📊 Progress Summary
-Total Instructions: 47  
+Total Instructions: 42  
 Completed: 28  
 In Progress: 0  
-Remaining: 19  
+Remaining: 14  
 
 ---
 
