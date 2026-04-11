@@ -108,7 +108,7 @@ module ALU #(parameter N = 32)(
     input [3:0] alu_control,
     output [N-1:0] result,
     output reg V, // overflow flag for ADD and SUB only
-    output reg C,     // carry flag for ADD and SUB only (Borrow flag in case of SUB)
+    output reg C,     // carry flag for ADD and SUB only (Borrow = ~Carry)
     output Z,     // zero flag
     output S      // sign flag
 );
@@ -151,7 +151,7 @@ module ALU #(parameter N = 32)(
         end
         else if(alu_control == 4'd6) begin
             V = (S & ~a[31] & b[31]) | (~S & a[31] & ~b[31]);
-            C = ~rca_cout;
+            C = rca_cout;
         end
         else begin
             V = 0;

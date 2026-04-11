@@ -27,7 +27,7 @@ module cpu(
     input [3:0] ssdSel,
     output reg [12:0] out
 );
-    wire [31:0] PCin;
+    reg [31:0] PCin;
     wire [31:0] PCout;
     register PC(
         .in(PCin),
@@ -85,13 +85,16 @@ module cpu(
         .ALU_select(ALU_select)
     );
     wire [31:0] ALU_out;
-    wire Z;
+    wire Z, V, C, S;
     ALU ALU_INSTANCE(
         .a(read_data1),
         .b(ALUSrc ? immediate : read_data2),
         .alu_control(ALU_select),
         .result(ALU_out),
-        .Z(Z)
+        .Z(Z),
+        .S(S),
+        .V(V),
+        .C(C)
     );
     wire [31:0] DM_out;
     DataMem DM(
@@ -123,7 +126,25 @@ module cpu(
         .b(32'd4),
         .sum(PC_NEXT)
     );
-    assign PCin = Branch & Z ? PC_IMM : PC_NEXT;
+    //assign PCin = Branch & Z ? PC_IMM : PC_NEXT;
+    
+    always @ * begin
+        if(Branch) begin
+            case(instruction[14:12])
+            3'b000: PCin = Z ? PC_IMM : PC_NEXT;  // BEQ
+            3'b001: PCin = ~Z ? PC_IMM : PC_NEXT; // BNE 
+            3'b100: PCin = (S != V) ? PC_IMM : PC_NEXT; // BLT
+            3'b101: PCin = (S == V) ? PC_IMM : PC_NEXT; // BGE
+            3'b110: PCin = ~C ? PC_IMM : PC_NEXT;   // BLTU
+            3'b111: PCin = C ? PC_IMM : PC_NEXT;    // BGEU
+            default: PCin = PC_NEXT;
+            endcase
+        end
+        else
+            PCin = PC_NEXT;
+    end
+    
+    
    always @ * begin
         case(ssdSel)
             4'b0000: out = PCout[12:0];
