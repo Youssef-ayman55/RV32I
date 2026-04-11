@@ -107,7 +107,10 @@ module ALU #(parameter N = 32)(
     input [N-1:0] b,
     input [3:0] alu_control,
     output [N-1:0] result,
-    output reg zero
+    output reg V, // overflow flag for ADD and SUB only
+    output reg C,     // carry flag for ADD and SUB only (Borrow flag in case of SUB)
+    output Z,     // zero flag
+    output S      // sign flag
 );
     wire [N-1:0] rca_out;
     wire rca_cout;
@@ -139,10 +142,20 @@ module ALU #(parameter N = 32)(
         .s(alu_control),
         .out(result)
     );
+    assign S = result[31];
+    assign Z = (result == 32'd0);
     always @ * begin
-        if(result == 0)
-            zero = 1;
-        else
-            zero = 0;
+        if(alu_control == 4'd2) begin
+            V = (S & ~a[31] & ~b[31]) | (~S & a[31] & b[31]);
+            C = rca_cout;
+        end
+        else if(alu_control == 4'd6) begin
+            V = (S & ~a[31] & b[31]) | (~S & a[31] & ~b[31]);
+            C = ~rca_cout;
+        end
+        else begin
+            V = 0;
+            C = 0;
+        end
     end
 endmodule

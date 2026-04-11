@@ -85,13 +85,13 @@ module cpu(
         .ALU_select(ALU_select)
     );
     wire [31:0] ALU_out;
-    wire zero;
+    wire Z;
     ALU ALU_INSTANCE(
         .a(read_data1),
         .b(ALUSrc ? immediate : read_data2),
         .alu_control(ALU_select),
         .result(ALU_out),
-        .zero(zero)
+        .Z(Z)
     );
     wire [31:0] DM_out;
     DataMem DM(
@@ -123,7 +123,7 @@ module cpu(
         .b(32'd4),
         .sum(PC_NEXT)
     );
-    assign PCin = Branch & zero ? PC_IMM : PC_NEXT;
+    assign PCin = Branch & Z ? PC_IMM : PC_NEXT;
    always @ * begin
         case(ssdSel)
             4'b0000: out = PCout[12:0];
