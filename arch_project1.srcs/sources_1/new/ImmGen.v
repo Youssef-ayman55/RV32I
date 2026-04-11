@@ -26,15 +26,13 @@ module ImmGen(
 );
     wire [6:0] opcode;
     assign opcode = inst[6:0];
-    reg [11:0] imm;
     always @ * begin
         case (opcode)
-            7'b0100011: imm = {inst[31:25], inst[11:7]};
-            7'b1100011: imm = {inst[31], inst[7], inst[30:25], inst[11:8]};
-            default: imm = inst[31:20];
+            7'b0100011: gen_out = {{20{inst[31]}}, inst[31:25], inst[11:7]}; // I-type instructions
+            7'b1100011: gen_out = {{20{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8]}; // Branch Instructions
+            7'b1101111: gen_out = {{12{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:21]}; // JAL
+            default: gen_out = {{20{inst[31]}}, inst[31:20]};
         endcase
     end
-    always @ * begin
-        gen_out = {{20{imm[11]}}, imm};
-    end
+  
 endmodule

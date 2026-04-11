@@ -36,7 +36,7 @@ assign condition = instruction[6:2];
 
 always @ * begin
     case(condition)
-        5'b00000: begin
+        5'b00000: begin     // Load Instructions
             Branch = 1'b0;
             MemRead = 1'b1;
             MemtoReg = 1'b1;
@@ -45,7 +45,7 @@ always @ * begin
             ALUSrc = 1'b1;
             RegWrite = 1'b1;
         end
-        5'b01000: begin
+        5'b01000: begin    // Save Instructions
             Branch = 1'b0;
             MemRead = 1'b0;
             MemtoReg = 1'b0;
@@ -54,7 +54,7 @@ always @ * begin
             ALUSrc = 1'b1;
             RegWrite = 1'b0;
         end
-        5'b01100: begin
+        5'b01100: begin    // R-type Instructions
             Branch = 1'b0;
             MemRead = 1'b0;
             MemtoReg = 1'b0;
@@ -63,7 +63,7 @@ always @ * begin
             ALUSrc = 1'b0;
             RegWrite = 1'b1;
         end
-        5'b00100: begin // I-type ALU instructions
+        5'b00100: begin    // I-type ALU instructions
             Branch = 1'b0;
             MemRead = 1'b0;
             MemtoReg = 1'b0;
@@ -72,7 +72,7 @@ always @ * begin
             ALUSrc = 1'b1;
             RegWrite = 1'b1;
         end
-        5'b11000: begin
+        5'b11000: begin    // Branch Instructions
             Branch = 1'b1;
             MemRead = 1'b0;
             MemtoReg = 1'b0;
@@ -80,6 +80,15 @@ always @ * begin
             MemWrite = 1'b0;
             ALUSrc = 1'b0;
             RegWrite = 1'b0;
+        end
+        5'b11011: begin    // JAL
+            Branch = 1'b0;
+            MemRead = 1'b0;
+            MemtoReg = 1'b0;
+            ALUOp = 2'b00;
+            MemWrite = 1'b0;
+            ALUSrc = 1'b0;
+            RegWrite = 1'b1;
         end
         default: begin
             Branch = 1'b0;

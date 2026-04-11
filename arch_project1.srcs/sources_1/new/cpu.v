@@ -59,7 +59,7 @@ module cpu(
     assign rs1 = instruction[19:15];
     assign rs2 = instruction[24:20];
     assign rd = instruction[11:7];
-    wire [31:0] reg_write_data;
+    reg [31:0] reg_write_data;
     wire [31:0] read_data1;
     wire [31:0] read_data2;
     register_file RF (
@@ -106,20 +106,32 @@ module cpu(
         .func3(instruction[14:12]),
         .data_out(DM_out)
     );
-    assign reg_write_data = MemtoReg ? DM_out : ALU_out;
+    
+    wire [31:0] PC_IMM;
+    wire [31:0] PC_NEXT;
+    always @ * begin
+        if(MemtoReg)
+            reg_write_data = DM_out;
+        else if(instruction[6:2] == 5'b11011)
+            reg_write_data = PC_NEXT;
+        else
+            reg_write_data = ALU_out;
+    end
+    
+    
     wire [31:0] shifted_immediate;
     nbitshiftleft1 SHIFTBY1(
         .in(immediate),
         .out(shifted_immediate)
     );
-    wire [31:0] PC_IMM;
+    
     rca PC_IMM_ADDER(
         .cin(1'b0),
         .a(PCout),
         .b(shifted_immediate),
         .sum(PC_IMM)
     );
-    wire [31:0] PC_NEXT;
+    
     rca PC_ADDER(
         .cin(1'b0),
         .a(PCout),
@@ -129,7 +141,9 @@ module cpu(
     //assign PCin = Branch & Z ? PC_IMM : PC_NEXT;
     
     always @ * begin
-        if(Branch) begin
+        if(instruction[6:2] == 5'b11011)
+            PCin = PC_IMM;
+        else if(Branch) begin
             case(instruction[14:12])
             3'b000: PCin = Z ? PC_IMM : PC_NEXT;  // BEQ
             3'b001: PCin = ~Z ? PC_IMM : PC_NEXT; // BNE 
