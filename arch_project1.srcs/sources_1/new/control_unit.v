@@ -90,6 +90,15 @@ always @ * begin
             ALUSrc = 1'b0;
             RegWrite = 1'b1;
         end
+        5'b11001: begin    // JALR 
+            Branch = 1'b0;
+            MemRead = 1'b0;
+            MemtoReg = 1'b0;
+            ALUOp = 2'b00; // Addition
+            MemWrite = 1'b0;
+            ALUSrc = 1'b1; // Immediate Operand 
+            RegWrite = 1'b1;
+        end
         default: begin
             Branch = 1'b0;
             MemRead = 1'b0;

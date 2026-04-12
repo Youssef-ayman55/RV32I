@@ -112,7 +112,7 @@ module cpu(
     always @ * begin
         if(MemtoReg)
             reg_write_data = DM_out;
-        else if(instruction[6:2] == 5'b11011)
+        else if(instruction[6:2] == 5'b11011 || instruction[6:2] == 5'b11001) // JAL & JALR
             reg_write_data = PC_NEXT;
         else
             reg_write_data = ALU_out;
@@ -141,9 +141,11 @@ module cpu(
     //assign PCin = Branch & Z ? PC_IMM : PC_NEXT;
     
     always @ * begin
-        if(instruction[6:2] == 5'b11011)
+        if(instruction[6:2] == 5'b11011) // JAL
             PCin = PC_IMM;
-        else if(Branch) begin
+        else if(instruction[6:2] == 5'b11001) // JALR
+            PCin = ALU_out & 32'hFFFFFFFE; // Ensures 2-byte Alignemnt to support Compressed instructions later
+        else if(Branch) begin // Branch Instructions
             case(instruction[14:12])
             3'b000: PCin = Z ? PC_IMM : PC_NEXT;  // BEQ
             3'b001: PCin = ~Z ? PC_IMM : PC_NEXT; // BNE 
@@ -155,7 +157,7 @@ module cpu(
             endcase
         end
         else
-            PCin = PC_NEXT;
+            PCin = PC_NEXT; // Normal Flow
     end
     
     
