@@ -75,14 +75,15 @@ This document tracks the implementation status of all **RV32I base integer instr
 - [ ] `EBREAK` — Breakpoint  
 - [ ] `FENCE`
 - [ ] `FENCE.TSO`
+- [ ] `PAUSE`
 
 ---
 
 ## 📊 Progress Summary
 Total Instructions: 42  
-Completed: 38  
+Completed: 37  
 In Progress: 0  
-Remaining: 4  
+Remaining: 5  
 
 ---
 
