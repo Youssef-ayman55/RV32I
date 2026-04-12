@@ -71,19 +71,19 @@ This document tracks the implementation status of all **RV32I base integer instr
 ---
 
 ## 🛑 System Instructions (Unprivileged Subset)
-- [ ] `ECALL`  — Environment Call  
-- [ ] `EBREAK` — Breakpoint  
-- [ ] `FENCE`
-- [ ] `FENCE.TSO`
-- [ ] `PAUSE`
+- [x] `ECALL`  — Environment Call  
+- [x] `EBREAK` — Breakpoint  
+- [x] `FENCE`
+- [x] `FENCE.TSO`
+- [x] `PAUSE`
 
 ---
 
 ## 📊 Progress Summary
 Total Instructions: 42  
-Completed: 37  
+Completed: 42  
 In Progress: 0  
-Remaining: 5  
+Remaining: 0  
 
 ---
 
