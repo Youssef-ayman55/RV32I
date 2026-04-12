@@ -31,6 +31,8 @@ module ImmGen(
             7'b0100011: gen_out = {{20{inst[31]}}, inst[31:25], inst[11:7]}; // I-type instructions
             7'b1100011: gen_out = {{20{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8]}; // Branch Instructions
             7'b1101111: gen_out = {{12{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:21]}; // JAL
+            7'b0110111: gen_out = {inst[31:12], 12'd0}; // LUI 
+            7'b0010111: gen_out = {inst[31:12], 12'd0}; // AUIPC
             default: gen_out = {{20{inst[31]}}, inst[31:20]};
         endcase
     end

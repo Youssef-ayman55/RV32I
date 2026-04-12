@@ -114,6 +114,10 @@ module cpu(
             reg_write_data = DM_out;
         else if(instruction[6:2] == 5'b11011 || instruction[6:2] == 5'b11001) // JAL & JALR
             reg_write_data = PC_NEXT;
+        else if(instruction[6:2] == 5'b00101) // AUIPC
+            reg_write_data = PC_IMM;
+        else if(instruction[6:2] == 5'b01101) // LUI
+            reg_write_data = immediate;
         else
             reg_write_data = ALU_out;
     end
@@ -128,7 +132,7 @@ module cpu(
     rca PC_IMM_ADDER(
         .cin(1'b0),
         .a(PCout),
-        .b(shifted_immediate),
+        .b(instruction[6:2] != 5'b00101 ? shifted_immediate : immediate), // AUIPC does not shift its immediate
         .sum(PC_IMM)
     );
     

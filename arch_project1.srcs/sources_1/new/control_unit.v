@@ -99,6 +99,24 @@ always @ * begin
             ALUSrc = 1'b1; // Immediate Operand 
             RegWrite = 1'b1;
         end
+        5'b01101: begin  // LUI
+            Branch = 1'b0;
+            MemRead = 1'b0;
+            MemtoReg = 1'b0;
+            ALUOp = 2'b00;
+            MemWrite = 1'b0;
+            ALUSrc = 1'b0;
+            RegWrite = 1'b1;
+        end
+        5'b01101: begin  // AUIPC (same as LUI)
+            Branch = 1'b0;
+            MemRead = 1'b0;
+            MemtoReg = 1'b0;
+            ALUOp = 2'b00;
+            MemWrite = 1'b0;
+            ALUSrc = 1'b0;
+            RegWrite = 1'b1;
+        end
         default: begin
             Branch = 1'b0;
             MemRead = 1'b0;
