@@ -65,8 +65,8 @@ This document tracks the implementation status of all **RV32I base integer instr
 ---
 
 ## 🧱 Upper Immediate Instructions
-- [ ] `LUI`   — Load Upper Immediate  
-- [ ] `AUIPC` — Add Upper Immediate to PC  
+- [x] `LUI`   — Load Upper Immediate  
+- [x] `AUIPC` — Add Upper Immediate to PC  
 
 ---
 
@@ -80,9 +80,9 @@ This document tracks the implementation status of all **RV32I base integer instr
 
 ## 📊 Progress Summary
 Total Instructions: 42  
-Completed: 36  
+Completed: 38  
 In Progress: 0  
-Remaining: 6  
+Remaining: 4  
 
 ---
 
