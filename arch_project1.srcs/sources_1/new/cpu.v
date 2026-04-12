@@ -27,12 +27,16 @@ module cpu(
     input [3:0] ssdSel,
     output reg [12:0] out
 );
+    reg active; // ANDed with clk to KILL the CPU in case of ECALL, EBREAK, PAUSE, FENCE, and FENCE.TSO 
+    
+   
     reg [31:0] PCin;
     wire [31:0] PCout;
+ 
     register PC(
         .in(PCin),
         .load(1'b1),
-        .clk(clk),
+        .clk(clk & active),
         .rst(rst),
         .out(PCout)
     );
@@ -68,7 +72,7 @@ module cpu(
         .write_add(rd),
         .write_data(reg_write_data),
         .reg_write(RegWrite),
-        .clk(clk),
+        .clk(clk & active),
         .rst(rst),
         .read_data1(read_data1),
         .read_data2(read_data2)
@@ -98,7 +102,7 @@ module cpu(
     );
     wire [31:0] DM_out;
     DataMem DM(
-        .clk(clk),
+        .clk(clk & active),
         .MemRead(MemRead),
         .MemWrite(MemWrite),
         .addr(ALU_out[7:0]), 
@@ -121,6 +125,7 @@ module cpu(
         else
             reg_write_data = ALU_out;
     end
+    
     
     
     wire [31:0] shifted_immediate;
@@ -162,6 +167,15 @@ module cpu(
         end
         else
             PCin = PC_NEXT; // Normal Flow
+    end
+    
+    
+    always @ * begin 
+        if(instruction[6:2] == 5'b00011 || instruction[6:2] == 5'b11100)
+            active = 1'b0;
+    end
+    always @ (posedge rst) begin
+        active <= 1'b1;
     end
     
     
