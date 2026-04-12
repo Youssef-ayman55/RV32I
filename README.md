@@ -59,8 +59,8 @@ This document tracks the implementation status of all **RV32I base integer instr
 ---
 
 ## 🚀 Jump Instructions
-- [ ] `JAL`  — Jump and Link  
-- [ ] `JALR` — Jump and Link Register  
+- [x] `JAL`  — Jump and Link  
+- [x] `JALR` — Jump and Link Register  
 
 ---
 
@@ -80,9 +80,9 @@ This document tracks the implementation status of all **RV32I base integer instr
 
 ## 📊 Progress Summary
 Total Instructions: 42  
-Completed: 28  
+Completed: 36  
 In Progress: 0  
-Remaining: 14  
+Remaining: 6  
 
 ---
 
